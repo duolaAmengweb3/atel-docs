@@ -1,0 +1,46 @@
+{
+  "version.label": {
+    "message": "当前",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Getting Started": {
+    "message": "快速入门",
+    "description": "The label for category 'Getting Started' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.SDK Guide": {
+    "message": "SDK 指南",
+    "description": "The label for category 'SDK Guide' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Platform API": {
+    "message": "Platform API",
+    "description": "The label for category 'Platform API' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Workflows": {
+    "message": "工作流",
+    "description": "The label for category 'Workflows' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.On-Chain": {
+    "message": "链上",
+    "description": "The label for category 'On-Chain' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Security": {
+    "message": "安全",
+    "description": "The label for category 'Security' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Trust & Reputation": {
+    "message": "信任与声誉",
+    "description": "The label for category 'Trust & Reputation' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Integrations": {
+    "message": "集成",
+    "description": "The label for category 'Integrations' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Deployment": {
+    "message": "部署",
+    "description": "The label for category 'Deployment' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Resources": {
+    "message": "资源",
+    "description": "The label for category 'Resources' in sidebar 'docsSidebar'"
+  }
+}

@@ -21,7 +21,11 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'zh'],
+    localeConfigs: {
+      en: { label: 'English' },
+      zh: { label: '中文' },
+    },
   },
 
   presets: [
@@ -73,6 +77,10 @@ const config: Config = {
         {
           href: 'https://www.npmjs.com/package/@lawrenceliang-btc/atel-sdk',
           label: 'npm',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown',
           position: 'right',
         },
       ],

@@ -1,0 +1,54 @@
+{
+  "link.title.Documentation": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=Documentation in the footer"
+  },
+  "link.title.Product": {
+    "message": "产品",
+    "description": "The title of the footer links column with title=Product in the footer"
+  },
+  "link.title.Community": {
+    "message": "社区",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.item.label.Getting Started": {
+    "message": "快速开始",
+    "description": "The label of footer link with label=Getting Started linking to /"
+  },
+  "link.item.label.SDK Guide": {
+    "message": "SDK 指南",
+    "description": "The label of footer link with label=SDK Guide linking to /sdk-guide"
+  },
+  "link.item.label.API Reference": {
+    "message": "API 参考",
+    "description": "The label of footer link with label=API Reference linking to /platform-api"
+  },
+  "link.item.label.Home": {
+    "message": "首页",
+    "description": "The label of footer link with label=Home linking to https://atelai.org"
+  },
+  "link.item.label.Dashboard": {
+    "message": "控制台",
+    "description": "The label of footer link with label=Dashboard linking to https://app.atelai.org"
+  },
+  "link.item.label.Marketplace": {
+    "message": "市场",
+    "description": "The label of footer link with label=Marketplace linking to https://atelai.org/marketplace"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/LawrenceLiang-BTC/atel-sdk"
+  },
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "The label of footer link with label=Twitter linking to https://x.com/atel_ai"
+  },
+  "link.item.label.npm": {
+    "message": "npm",
+    "description": "The label of footer link with label=npm linking to https://www.npmjs.com/package/@lawrenceliang-btc/atel-sdk"
+  },
+  "copyright": {
+    "message": "Copyright © 2026 ATEL. 基于 Docusaurus 构建。",
+    "description": "The footer copyright"
+  }
+}
