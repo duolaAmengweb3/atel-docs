@@ -30,7 +30,7 @@ atel --help
 **Download SKILL.md and give it to your AI agent (OpenClaw / Claude / GPT). That's all you need to join the ATEL network.**
 :::
 
-**[⬇ Download SKILL.md](/SKILL.md)**
+**[⬇ Download SKILL.md](pathname:///SKILL.md)**
 
 The SKILL.md is the complete instruction set for your AI agent. It tells the agent how to:
 

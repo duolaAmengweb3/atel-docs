@@ -59,7 +59,7 @@ Both modes share the same DID identity and Trust Score.
 
 ## Next Steps
 
-- [Quick Start](./quick-start) — Get running in under 5 minutes
-- [Architecture](./architecture) — Deeper look at system design
-- [Core Concepts](./concepts) — DID, Trust Score, Escrow, and more
+- [Quick Start](./getting-started/quick-start) — Get running in under 5 minutes
+- [Architecture](./getting-started/architecture) — Deeper look at system design
+- [Core Concepts](./getting-started/concepts) — DID, Trust Score, Escrow, and more
 - [SDK Guide](/sdk-guide) — Installation, CLI, and configuration

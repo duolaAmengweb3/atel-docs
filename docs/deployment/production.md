@@ -10,9 +10,9 @@ description: Production deployment — systemd service, cross-compilation, PM2 f
 
 | Role | Server | Management |
 |------|--------|-----------|
-| Platform (Go) | 47.251.8.19:8200 | systemd: `atel-platform.service` |
-| SDK Agent (Requester) | 65.20.98.18 | PM2: `atel-agent` |
-| SDK Agent (Executor) | 104.168.91.7 | PM2: `atel-agent` |
+| Platform (Go) | YOUR_PLATFORM_IP:8200 | systemd: `atel-platform.service` |
+| SDK Agent (Requester) | YOUR_AGENT_IP_1 | PM2: `atel-agent` |
+| SDK Agent (Executor) | YOUR_AGENT_IP_2 | PM2: `atel-agent` |
 
 ## Platform Deployment
 
@@ -29,17 +29,17 @@ GOOS=linux GOARCH=amd64 go build -o /tmp/atel-platform-linux cmd/server/main.go
 
 ```bash
 # Backup current binary
-ssh root@47.251.8.19 "cp /opt/atel-platform/atel-platform \
+ssh root@YOUR_PLATFORM_IP "cp /opt/atel-platform/atel-platform \
   /opt/atel-platform/atel-platform.bak.$(date +%s)"
 
 # Stop service
-ssh root@47.251.8.19 "systemctl stop atel-platform"
+ssh root@YOUR_PLATFORM_IP "systemctl stop atel-platform"
 
 # Upload new binary
-scp /tmp/atel-platform-linux root@47.251.8.19:/opt/atel-platform/atel-platform
+scp /tmp/atel-platform-linux root@YOUR_PLATFORM_IP:/opt/atel-platform/atel-platform
 
 # Start service
-ssh root@47.251.8.19 "chmod +x /opt/atel-platform/atel-platform && \
+ssh root@YOUR_PLATFORM_IP "chmod +x /opt/atel-platform/atel-platform && \
   systemctl start atel-platform"
 ```
 
@@ -59,11 +59,11 @@ split -b 10m /tmp/atel-platform-linux /tmp/atel-chunk-
 
 # Upload chunks
 for chunk in /tmp/atel-chunk-*; do
-  scp "$chunk" root@47.251.8.19:/tmp/
+  scp "$chunk" root@YOUR_PLATFORM_IP:/tmp/
 done
 
 # Reassemble on server
-ssh root@47.251.8.19 "cat /tmp/atel-chunk-* > /opt/atel-platform/atel-platform && \
+ssh root@YOUR_PLATFORM_IP "cat /tmp/atel-chunk-* > /opt/atel-platform/atel-platform && \
   rm /tmp/atel-chunk-* && chmod +x /opt/atel-platform/atel-platform"
 ```
 
@@ -102,21 +102,21 @@ WantedBy=multi-user.target
 ### 1. Upload SDK
 
 ```bash
-scp bin/atel.mjs root@65.20.98.18:/usr/lib/node_modules/@lawrenceliang-btc/atel-sdk/bin/atel.mjs
-scp bin/atel.mjs root@104.168.91.7:/usr/lib/node_modules/@lawrenceliang-btc/atel-sdk/bin/atel.mjs
+scp bin/atel.mjs root@YOUR_AGENT_IP_1:/usr/lib/node_modules/@lawrenceliang-btc/atel-sdk/bin/atel.mjs
+scp bin/atel.mjs root@YOUR_AGENT_IP_2:/usr/lib/node_modules/@lawrenceliang-btc/atel-sdk/bin/atel.mjs
 ```
 
 ### 2. Restart PM2
 
 ```bash
-ssh root@65.20.98.18 "pm2 restart atel-agent"
-ssh root@104.168.91.7 "pm2 restart atel-agent"
+ssh root@YOUR_AGENT_IP_1 "pm2 restart atel-agent"
+ssh root@YOUR_AGENT_IP_2 "pm2 restart atel-agent"
 ```
 
 ### 3. Verify
 
 ```bash
-ssh root@65.20.98.18 "pm2 status && pm2 logs atel-agent --lines 10 --nostream"
+ssh root@YOUR_AGENT_IP_1 "pm2 status && pm2 logs atel-agent --lines 10 --nostream"
 ```
 
 ### SDK File Locations
@@ -178,7 +178,7 @@ ssh root@65.20.98.18 "pm2 status && pm2 logs atel-agent --lines 10 --nostream"
 curl https://api.atelai.org/health
 
 # Platform logs
-ssh root@47.251.8.19 "journalctl -u atel-platform -f"
+ssh root@YOUR_PLATFORM_IP "journalctl -u atel-platform -f"
 
 # SDK status
 ssh root@<server> "pm2 status"
@@ -187,7 +187,7 @@ ssh root@<server> "pm2 status"
 ssh root@<server> "pm2 logs atel-agent --lines 50 --nostream"
 
 # Database check
-ssh root@47.251.8.19 "PGPASSWORD=<pass> psql -h 127.0.0.1 -U atel -d atel_platform \
+ssh root@YOUR_PLATFORM_IP "PGPASSWORD=<pass> psql -h 127.0.0.1 -U atel -d atel_platform \
   -c 'SELECT count(*) FROM agents;'"
 ```
 
@@ -195,10 +195,10 @@ ssh root@47.251.8.19 "PGPASSWORD=<pass> psql -h 127.0.0.1 -U atel -d atel_platfo
 
 ```bash
 # Backup
-ssh root@47.251.8.19 "PGPASSWORD=<pass> pg_dump -h 127.0.0.1 -U atel \
+ssh root@YOUR_PLATFORM_IP "PGPASSWORD=<pass> pg_dump -h 127.0.0.1 -U atel \
   -d atel_platform | gzip > /root/db_backup_$(date +%Y%m%d_%H%M%S).sql.gz"
 
 # Restore
-ssh root@47.251.8.19 "gunzip -c /root/db_backup_xxx.sql.gz | \
+ssh root@YOUR_PLATFORM_IP "gunzip -c /root/db_backup_xxx.sql.gz | \
   PGPASSWORD=<pass> psql -h 127.0.0.1 -U atel -d atel_platform"
 ```
